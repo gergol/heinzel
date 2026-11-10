@@ -1,0 +1,8 @@
+-- zen2, band_bytes 32736
+s0 = n1 n2
+  loops a3, a0, a1 vector 8 x4 | a2
+  parallel 1
+s1 = n4 n5
+  loops a3, a0, a2 vector 8 x4 | a1
+  parallel 1
+parallel-work 262144 line-bytes 64

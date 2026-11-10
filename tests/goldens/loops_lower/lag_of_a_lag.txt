@@ -1,0 +1,24 @@
+b0 f32 [9 19] feed 0 value 5
+b1 f32 [9 19] value 1 prefix 1
+b2 f32 [9 19] value 10 prefix 1
+stage 0 [9 19]
+  s0 load f32 normal node 0 b2(0 1) back 1 -> b1(0 1)
+  s1 load f32 normal node 1 b1(0 1) back 1
+  s2 map f32 _mul normal node 2 #0.5 s0
+  s3 load f32 in-unknown b0(0 1)
+  s4 map f32 _add normal node 3 s3 s2
+  s5 map f32 _mul normal node 4 #0.25 s1
+  s6 map f32 _add normal node 5 s4 s5
+  s7 load f32 normal node 6 s6 -> b2(0 1)
+outputs b2
+n0 stage 0
+  n1 loop a1 x1
+    n2 loop a0 x1
+      n3 compute s0
+      n4 compute s1
+      n5 compute s2
+      n6 compute s3
+      n7 compute s4
+      n8 compute s5
+      n9 compute s6
+      n10 compute s7

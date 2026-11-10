@@ -1,0 +1,23 @@
+b0 f32 [16 d0] feed 0 value 4
+b1 f32 [16 d0] value 6 prefix 1
+stage 0 [16 d0]
+  s0 load f32 normal node 0 b1(0 1) back 1
+  s1 map f32 _mul normal node 1 #0.5 s0
+  s2 load f32 in-unknown b0(0 1)
+  s3 map f32 _add normal node 2 s2 s1
+  s4 load f32 normal node 3 s3 -> b1(0 1)
+outputs b1
+n0 stage 0
+  n1 loop a0 x16 masked strip 0
+    n2 registers state s4 link n7
+      n3 unroll a0 x8
+        n4 vector a0 x8
+          n5 open s0 keeps s4
+      n6 loop a1 x1
+        n7 unroll a0 x8
+          n8 vector a0 x8
+            n9 compute s0 reads s4
+            n10 compute s1
+            n11 compute s2
+            n12 compute s3
+            n13 compute s4 keeps s4

@@ -1,0 +1,27 @@
+copies 1 size 18944
+b1 2048
+b2 6464
+b3 10880
+b4 11200
+b5 11520
+b6 15936
+b7 16256
+b8 16576
+copies 3 size 18944
+b1 2048
+b2 6464
+b3 10880
+b4 11200
+b5 11520
+b6 15936
+b7 16256
+b8 16576
+b0 elements 592 per sample 16 strides 1 16
+b1 elements 256 per sample 16 strides 1 16
+b2 elements 256 per sample 16 strides 1 16
+b3 elements 592 per sample 16 strides 1 16
+b4 elements 592 per sample 16 strides 1 16
+b5 elements 256 per sample 16 strides 1 16
+b6 elements 592 per sample 16 strides 1 16
+b7 elements 592 per sample 16 strides 1 16
+b8 elements 592 per sample 16 strides 1 16

@@ -1,0 +1,5 @@
+-- zen2, two cores
+s0 = n0 n1
+  loops a0 vector 16 |
+  parallel 0
+parallel-work 262144 line-bytes 64

@@ -1,0 +1,23 @@
+b0 f32 [8 6 1] feed 0 value 0
+b1 f32 [1 3 1 1] feed 1 value 3
+b2 f32 [6 6 1] value 5
+stage 0 [6 3 6 1]
+  s0 load f32 in-unknown b0(0 0 1 2)
+  s1 map f32 _mul normal node 0 s0 s0
+  s2 load f32 in-unknown b1(- 1 - 3)
+  s3 map f32 _mul normal node 2 s1 s2
+  s4 fold f32 normal node 3 reduce-sum s3 -> b2(0 - 1 2)
+outputs b2
+n0 stage 0
+  n1 loop a3 x1
+    n2 loop a0 x1
+      n3 loop a2 x1
+        n4 registers acc s4 first
+          n5 init s4
+          n6 loop a1 x1 peel
+            n7 compute s0
+            n8 compute s1
+            n9 compute s2
+            n10 compute s3
+            n11 accumulate s4
+          n12 finish s4

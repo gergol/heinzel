@@ -1,0 +1,15 @@
+-- zen2
+s0 = n0 n1 n2
+  loops a2, a0 unroll 6, a1 vector 8 x2 | a3
+  contract relaid 1 block 16 parallel 1
+parallel-work 262144 line-bytes 64
+-- default
+s0 = n0 n1 n2
+  loops a2, a0 tile 60, a1 vector 4 x2, a0 unroll 6 | a3
+  relaid 1 block 8 fetch
+parallel-work 262144 line-bytes 64
+-- tiny
+s0 = n0 n1 n2
+  loops a2, a3 tile 8, a0 tile 30, a1 vector 8 x2, a0 unroll 6 | a3
+  contract relaid 1 block 16 fetch
+parallel-work 262144 line-bytes 64

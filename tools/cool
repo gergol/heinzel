@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Runs a build, test or benchmark only while the box is cool: it starts once Tctl is below 75 °C and pauses the whole
+# command (SIGSTOP to its process group) while Tctl is at 84 °C or more, resuming below 78. The box hard-resets when
+# its cooling cannot keep up (2026-09); two builds at once reached 87-90 °C (2026-10-09). Wrap the usual line:
+#   tools/cool tools/capped taskset -c 8-15,24-31 cmake --build build/rw-asan -j6
+set -uo pipefail
+temp() { sensors | grep Tctl | grep -oE '[0-9]+' | head -1; }
+until [ "$(temp)" -lt 75 ]; do sleep 10; done
+setsid "$@" &
+job=$!
+paused=0
+while kill -0 "$job" 2>/dev/null; do
+    t=$(temp)
+    if [ $paused = 0 ] && [ "$t" -ge 84 ]; then
+        kill -STOP -- -"$job" 2>/dev/null; paused=1; echo "tools/cool: paused at $t °C" >&2
+    elif [ $paused = 1 ] && [ "$t" -lt 78 ]; then
+        kill -CONT -- -"$job" 2>/dev/null; paused=0; echo "tools/cool: resumed at $t °C" >&2
+    fi
+    sleep 5
+done
+wait "$job"

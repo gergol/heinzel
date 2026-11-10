@@ -1,0 +1,5 @@
+-- zen2
+s0 = n0 n1
+  loops a2, a0, a1 |
+  parallel 1
+parallel-work 262144 line-bytes 64

@@ -1,0 +1,16 @@
+b0 f32 [64 1] feed 0 value 0
+b1 f32 [60 1] value 2
+stage 0 [60 5 1]
+  s0 load f32 in-unknown b0(0 0 1)
+  s1 select f32 normal node 1 gathered 5 rank 2 s0 -> b1(0 - 1)
+outputs b1
+n0 stage 0
+  n1 loop a2 x1
+    n2 loop a0 x8 masked strip 0
+      n3 registers gathered s1 link n5
+        n4 turns a1 x1
+          n5 vector a0 x8
+            n6 compute s0
+            n7 collect s1
+        n8 vector a0 x8
+          n9 rank s1

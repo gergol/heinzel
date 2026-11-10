@@ -1,0 +1,5 @@
+-- zen2
+s0 = n6 n7 n5 n8 n9 n10 n11 n12 n13 n14 n15 n16 n17 n18 n19 n20 n21
+  loops a0 vector 4 | a1
+  skewed
+parallel-work 262144 line-bytes 64

@@ -1,0 +1,13 @@
+-- zen2
+s0 = n0 n1 n2 n3
+  loops a0 vector 8 x2 | a1
+  parallel 0
+parallel-work 262144 line-bytes 64
+-- default
+s0 = n0 n1 n2 n3
+  loops a0 vector 4 x3 | a1
+parallel-work 262144 line-bytes 64
+-- tiny
+s0 = n0 n1 n2 n3
+  loops a0 vector 8 x2 | a1
+parallel-work 262144 line-bytes 64

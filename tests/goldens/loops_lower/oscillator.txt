@@ -1,0 +1,32 @@
+b0 f32 [d0] feed 0 value 2
+b1 f32 [d0] value 6 prefix 1
+b2 f32 [d0] value 11
+stage 0 [d0]
+  s0 load f32 normal node 0 b1(0) back 1
+  s1 load f32 in-unknown b0(0)
+  s2 map f32 _add normal node 1 s0 s1
+  s3 map f32 _floor normal node 2 s2
+  s4 map f32 _sub normal node 3 s2 s3
+  s5 load f32 normal node 4 s4 -> b1(0)
+stage 1 [d0]
+  s0 load f32 in-unknown b1(0)
+  s1 map f32 _mul normal node 5 s0 #2
+  s2 map f32 _sinpi normal node 6 s1
+  s3 map f32 _mul normal node 7 s2 #0.5 -> b2(0)
+outputs b2
+n0 stage 0
+  n1 registers state s5
+    n2 open s0 keeps s5
+    n3 loop a0 x1
+      n4 compute s0 reads s5
+      n5 compute s1
+      n6 compute s2
+      n7 compute s3
+      n8 compute s4
+      n9 compute s5 keeps s5
+n10 stage 1
+  n11 loop a0 x1
+    n12 compute s0
+    n13 compute s1
+    n14 compute s2
+    n15 compute s3

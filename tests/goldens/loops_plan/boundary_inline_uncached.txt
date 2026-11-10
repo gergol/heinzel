@@ -1,0 +1,5 @@
+-- zen2
+s0 = n2 n3 inline(n0 through n1)
+  loops a2, a0 vector 8 x4 | a1
+  parallel 1
+parallel-work 262144 line-bytes 64

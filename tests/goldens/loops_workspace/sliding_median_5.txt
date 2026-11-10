@@ -1,0 +1,6 @@
+copies 1 size 132
+b1 0
+copies 3 size 132
+b1 0
+b0 elements 37 per sample 37 strides 1 37
+b1 elements 33 per sample 33 strides 1 33

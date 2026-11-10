@@ -1,0 +1,4 @@
+-- default
+s0 = n0
+  loops a2, a3 tile 368, a1 vector 4 x2, a0 unroll 6 | a3
+parallel-work 262144 line-bytes 64

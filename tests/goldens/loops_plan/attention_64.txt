@@ -1,0 +1,44 @@
+-- zen2
+s0 = n0 n1
+  loops a2, a0 unroll 6, a1 vector 8 x2 | a3
+  contract turned 1 parallel 1
+s1 = n2
+  loops a2, a0 | a1 vector 8 x4
+  parallel 1
+s2 = n3 n4 n5
+  loops a2, a0 | a1 vector 8 x4
+  parallel 1
+s3 = n6
+  loops a2, a0, a1 vector 16 |
+  parallel 1
+s4 = n7
+  loops a2, a0 unroll 6, a1 vector 8 x2 | a3
+  contract parallel 1
+parallel-work 262144 line-bytes 64
+-- default
+s0 = n0 n1
+  loops a2, a0 unroll 6, a1 vector 4 x2 | a3
+  turned 1
+s1 = n2
+  loops a2, a0 | a1 vector 4 x4
+s2 = n3 n4 n5
+  loops a2, a0 | a1 vector 4 x4
+s3 = n6
+  loops a2, a0, a1 vector 8 |
+s4 = n7
+  loops a2, a0 unroll 6, a1 vector 4 x2 | a3
+parallel-work 262144 line-bytes 64
+-- tiny
+s0 = n0 n1
+  loops a2, a3 tile 8, a0 tile 30, a1 vector 8 x2, a0 unroll 6 | a3
+  contract relaid 1 block 16 turned 1 fetch
+s1 = n2
+  loops a2, a0 | a1 vector 8 x4
+s2 = n3 n4 n5
+  loops a2, a0 | a1 vector 8 x4
+s3 = n6
+  loops a2, a0, a1 vector 16 |
+s4 = n7
+  loops a2, a3 tile 8, a0 tile 30, a1 vector 8 x2, a0 unroll 6 | a3
+  contract relaid 1 block 16 fetch
+parallel-work 262144 line-bytes 64

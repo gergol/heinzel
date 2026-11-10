@@ -1,0 +1,14 @@
+b0 f32 [4 16] feed 0 value 2
+b1 f32 [4 16] value 0 prefix 2 ramp
+b2 f32 [4 16] value 3
+stage 0 [4 16]
+  s0 load f32 normal node 1 b1(0 1) back 2
+  s1 load f32 in-unknown b0(0 1)
+  s2 map f32 _add normal node 2 s1 s0 -> b2(0 1)
+outputs b2
+n0 stage 0
+  n1 loop a1 x1
+    n2 loop a0 x1
+      n3 compute s0
+      n4 compute s1
+      n5 compute s2

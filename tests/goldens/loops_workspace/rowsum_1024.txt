@@ -1,0 +1,6 @@
+copies 1 size 2196
+b1 2048
+copies 3 size 2196
+b1 2048
+b0 elements 37888 per sample 1024 strides 1 1024
+b1 elements 37 per sample 1 strides 1

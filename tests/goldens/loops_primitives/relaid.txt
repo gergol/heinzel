@@ -1,0 +1,38 @@
+b0 f32 [8 8 1] feed 0 value 0
+b1 f32 [8 32 1] feed 1 value 1
+b2 f32 [8 32 1] value 1 blocked a1/16
+b3 f32 [8 32 1] value 2
+stage 0 [8 32 1]
+  s0 load f32 b1(0 1 2) -> b2(0 1 2)
+stage 1 [8 32 1 8]
+  s0 load f32 in-unknown b0(0 - 2 1)
+  s1 load f32 in-unknown b2(- 1 2 0)
+  s2 fold f32 normal node 0 product-sum fused s0 s1 -> b3(0 1 2 -)
+outputs b3
+n0 stage 0
+  n1 loop a2 x1
+    n2 loop a1 x16
+      n3 loop a0 x1
+        n4 loop a1 x8 ones strip 0
+          n5 vector a1 x8
+            n6 compute s0
+n7 stage 1
+  n8 loop a2 x1
+    n9 loop a0 x4 ones strip 0
+      n10 loop a1 x16 masked strip 1
+        n11 registers acc s2 link n17
+          n12 unroll a0 x1
+            n13 unroll a1 x8
+              n14 vector a1 x8
+                n15 init s2
+          n16 loop a3 x1
+            n17 unroll a0 x1
+              n18 unroll a1 x8
+                n19 vector a1 x8
+                  n20 compute s0
+                  n21 compute s1
+                  n22 accumulate s2
+          n23 unroll a0 x1
+            n24 unroll a1 x8
+              n25 vector a1 x8
+                n26 finish s2

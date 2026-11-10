@@ -1,0 +1,9 @@
+copies 1 size 1516
+b1 64
+b2 832
+copies 3 size 1516
+b1 64
+b2 832
+b0 elements 171 per sample 9 strides 1 9
+b1 elements 171 per sample 9 strides 1 9
+b2 elements 171 per sample 9 strides 1 9

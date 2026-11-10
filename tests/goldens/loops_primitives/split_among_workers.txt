@@ -1,0 +1,16 @@
+b0 f32 [d0] feed 0 value 0
+b1 f32 [d0] feed 1 value 1
+b2 f32 [d0] value 3
+stage 0 [d0] split n1
+  s0 load f32 in-unknown b0(0)
+  s1 load f32 in-unknown b1(0)
+  s2 map f32 _mul normal node 0 s0 s1
+  s3 map f32 _add normal node 1 s2 s1 -> b2(0)
+outputs b2
+n0 stage 0
+  n1 loop a0 x8 ones strip 0
+    n2 vector a0 x8
+      n3 compute s0
+      n4 compute s1
+      n5 compute s2
+      n6 compute s3

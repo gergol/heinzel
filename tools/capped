@@ -1,0 +1,6 @@
+#!/bin/sh
+# Runs a build, test or benchmark in a user cgroup capped at $CAP (32G), without swap: a translation unit that runs
+# away is killed alone (OOMPolicy=continue), and `ninja -k 0` names it, instead of the box going down (2026-10-04: one
+# TU took 33 GB). systemd-run needs the session bus, so run it outside the sandbox.
+#   tools/capped cmake --build build/rw-asan -j6
+exec systemd-run --user --scope --quiet -p MemoryMax="${CAP:-32G}" -p MemorySwapMax=0 -p OOMPolicy=continue -- "$@"

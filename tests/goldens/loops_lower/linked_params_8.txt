@@ -1,0 +1,292 @@
+b0 f32 [] feed 0 value 0
+b1 f32 [4096] feed 1 value 1
+b2 f32 [] feed 2 value 4
+b3 f32 [] feed 3 value 8
+b4 f32 [] feed 4 value 13
+b5 f32 [] feed 5 value 16
+b6 f32 [] feed 6 value 20
+b7 f32 [] feed 7 value 21
+b8 f32 [] feed 8 value 22
+b9 f32 [] feed 9 value 23
+b10 f32 [] feed 10 value 24
+b11 f32 [] feed 11 value 25
+b12 f32 [] feed 12 value 26
+b13 f32 [] feed 13 value 27
+b14 f32 [] feed 14 value 28
+b15 f32 [] feed 15 value 29
+b16 f32 [] feed 16 value 30
+b17 f32 [] feed 17 value 31
+b18 f32 [] feed 18 value 32
+b19 f32 [] feed 19 value 33
+b20 f32 [] feed 20 value 34
+b21 f32 [] feed 21 value 35
+b22 f32 [] feed 22 value 36
+b23 f32 [] feed 23 value 37
+b24 f32 [] feed 24 value 38
+b25 f32 [] feed 25 value 39
+b26 f32 [] feed 26 value 40
+b27 f32 [] feed 27 value 41
+b28 f32 [] feed 28 value 42
+b29 f32 [] feed 29 value 43
+b30 f32 [] feed 30 value 44
+b31 f32 [] feed 31 value 45
+b32 f32 [] feed 32 value 46
+b33 f32 [] feed 33 value 47
+b34 f32 [] feed 34 value 48
+b35 f32 [] feed 35 value 49
+b36 f32 [] feed 36 value 50
+b37 f32 [] feed 37 value 51
+b38 f32 [] feed 38 value 52
+b39 f32 [] feed 39 value 53
+b40 f32 [] feed 40 value 54
+b41 f64 [8 1] value 55 constant first 0
+b42 f64 [8 1] value 56 constant first 8
+b43 f64 [8 1] value 57 constant first 16
+b44 f64 [8 1] value 58 constant first 24
+b45 f64 [8 1] value 59 constant first 32
+b46 f64 [8 1] value 60 constant first 40
+b47 f64 [8 1] value 61 constant first 48
+b48 f32 [8 1] value 68
+b49 f32 [8 1] value 75
+b50 f32 [8 1] value 82
+b51 f32 [8 1] value 89
+b52 f32 [8 1] value 96
+b53 f64 [8 4096] value 97 prefix 2 only-past
+b54 f64 [8 4096] value 19 prefix 2 only-past
+b55 f32 [4096] value 99
+stage 0 [8 1] split n2
+  s0 load f64 in-unknown b41(0 -)
+  s1 load f32 in-unknown b6(- -)
+  s2 load f32 in-unknown b0(- -)
+  s3 map f32 _select in-f64 normal node 7 s0 s1 s2
+  s4 load f64 in-unknown b42(0 -)
+  s5 load f32 in-unknown b11(- -)
+  s6 map f32 _select in-f64 normal node 8 s4 s5 s3
+  s7 load f64 in-unknown b43(0 -)
+  s8 load f32 in-unknown b16(- -)
+  s9 map f32 _select in-f64 normal node 9 s7 s8 s6
+  s10 load f64 in-unknown b44(0 -)
+  s11 load f32 in-unknown b21(- -)
+  s12 map f32 _select in-f64 normal node 10 s10 s11 s9
+  s13 load f64 in-unknown b45(0 -)
+  s14 load f32 in-unknown b26(- -)
+  s15 map f32 _select in-f64 normal node 11 s13 s14 s12
+  s16 load f64 in-unknown b46(0 -)
+  s17 load f32 in-unknown b31(- -)
+  s18 map f32 _select in-f64 normal node 12 s16 s17 s15
+  s19 load f64 in-unknown b47(0 -)
+  s20 load f32 in-unknown b36(- -)
+  s21 map f32 _select in-f64 normal node 13 s19 s20 s18 -> b48(0 1)
+  s22 load f32 in-unknown b7(- -)
+  s23 load f32 in-unknown b2(- -)
+  s24 map f32 _select in-f64 normal node 14 s0 s22 s23
+  s25 load f32 in-unknown b12(- -)
+  s26 map f32 _select in-f64 normal node 15 s4 s25 s24
+  s27 load f32 in-unknown b17(- -)
+  s28 map f32 _select in-f64 normal node 16 s7 s27 s26
+  s29 load f32 in-unknown b22(- -)
+  s30 map f32 _select in-f64 normal node 17 s10 s29 s28
+  s31 load f32 in-unknown b27(- -)
+  s32 map f32 _select in-f64 normal node 18 s13 s31 s30
+  s33 load f32 in-unknown b32(- -)
+  s34 map f32 _select in-f64 normal node 19 s16 s33 s32
+  s35 load f32 in-unknown b37(- -)
+  s36 map f32 _select in-f64 normal node 20 s19 s35 s34 -> b49(0 1)
+  s37 load f32 in-unknown b8(- -)
+  s38 load f32 in-unknown b3(- -)
+  s39 map f32 _select in-f64 normal node 21 s0 s37 s38
+  s40 load f32 in-unknown b13(- -)
+  s41 map f32 _select in-f64 normal node 22 s4 s40 s39
+  s42 load f32 in-unknown b18(- -)
+  s43 map f32 _select in-f64 normal node 23 s7 s42 s41
+  s44 load f32 in-unknown b23(- -)
+  s45 map f32 _select in-f64 normal node 24 s10 s44 s43
+  s46 load f32 in-unknown b28(- -)
+  s47 map f32 _select in-f64 normal node 25 s13 s46 s45
+  s48 load f32 in-unknown b33(- -)
+  s49 map f32 _select in-f64 normal node 26 s16 s48 s47
+  s50 load f32 in-unknown b38(- -)
+  s51 map f32 _select in-f64 normal node 27 s19 s50 s49 -> b50(0 1)
+  s52 load f32 in-unknown b9(- -)
+  s53 load f32 in-unknown b4(- -)
+  s54 map f32 _select in-f64 normal node 28 s0 s52 s53
+  s55 load f32 in-unknown b14(- -)
+  s56 map f32 _select in-f64 normal node 29 s4 s55 s54
+  s57 load f32 in-unknown b19(- -)
+  s58 map f32 _select in-f64 normal node 30 s7 s57 s56
+  s59 load f32 in-unknown b24(- -)
+  s60 map f32 _select in-f64 normal node 31 s10 s59 s58
+  s61 load f32 in-unknown b29(- -)
+  s62 map f32 _select in-f64 normal node 32 s13 s61 s60
+  s63 load f32 in-unknown b34(- -)
+  s64 map f32 _select in-f64 normal node 33 s16 s63 s62
+  s65 load f32 in-unknown b39(- -)
+  s66 map f32 _select in-f64 normal node 34 s19 s65 s64 -> b51(0 1)
+  s67 load f32 in-unknown b10(- -)
+  s68 load f32 in-unknown b5(- -)
+  s69 map f32 _select in-f64 normal node 35 s0 s67 s68
+  s70 load f32 in-unknown b15(- -)
+  s71 map f32 _select in-f64 normal node 36 s4 s70 s69
+  s72 load f32 in-unknown b20(- -)
+  s73 map f32 _select in-f64 normal node 37 s7 s72 s71
+  s74 load f32 in-unknown b25(- -)
+  s75 map f32 _select in-f64 normal node 38 s10 s74 s73
+  s76 load f32 in-unknown b30(- -)
+  s77 map f32 _select in-f64 normal node 39 s13 s76 s75
+  s78 load f32 in-unknown b35(- -)
+  s79 map f32 _select in-f64 normal node 40 s16 s78 s77
+  s80 load f32 in-unknown b40(- -)
+  s81 map f32 _select in-f64 normal node 41 s19 s80 s79 -> b52(0 1)
+stage 1 [8 4096] time n96 skewed
+  s0 load f64 normal node 43 b53(0 -) back 1
+  s1 load f64 normal node 45 b53(0 -) back 2
+  s2 load f32 in-unknown b1(- 0)
+  s3 map f64 _chain normal node 42 s2 b54(0 -)@0-1 -> b53(0 -)
+  s4 load f32 in-unknown b49(0 -)
+  s5 map f64 _mul normal node 44 s4 s0
+  s6 load f32 in-unknown b50(0 -)
+  s7 map f64 _mul normal node 46 s6 s1
+  s8 load f64 normal node 47 b54(0 -) back 1
+  s9 load f32 in-unknown b51(0 -)
+  s10 map f64 _mul normal node 48 s9 s8
+  s11 load f64 normal node 49 b54(0 -) back 2
+  s12 load f32 in-unknown b52(0 -)
+  s13 map f64 _mul normal node 50 s12 s11
+  s14 map f64 _sub normal node 51 s7 s13
+  s15 map f64 _add normal node 52 s14 s5
+  s16 map f64 _sub normal node 53 s15 s10
+  s17 load f32 in-unknown b48(0 -)
+  s18 map f64 _madd normal node 54 s17 s3 s16
+  s19 load f64 normal node 55 s18 -> b54(0 -)
+  s20 load f32 in-f64 normal node 56 s19
+  s21 load f32 normal node 57 s20
+  s22 load f32 normal node 58 s21 -> b55(- 0)
+outputs b55 parallel-work 262144 line-bytes 64
+n0 stage 0
+  n1 loop a1 x1
+    n2 loop a0 x8 ones strip 0
+      n3 vector a0 x8
+        n4 compute s0
+        n5 compute s1
+        n6 compute s2
+        n7 compute s3
+        n8 compute s4
+        n9 compute s5
+        n10 compute s6
+        n11 compute s7
+        n12 compute s8
+        n13 compute s9
+        n14 compute s10
+        n15 compute s11
+        n16 compute s12
+        n17 compute s13
+        n18 compute s14
+        n19 compute s15
+        n20 compute s16
+        n21 compute s17
+        n22 compute s18
+        n23 compute s19
+        n24 compute s20
+        n25 compute s21
+        n26 compute s22
+        n27 compute s23
+        n28 compute s24
+        n29 compute s25
+        n30 compute s26
+        n31 compute s27
+        n32 compute s28
+        n33 compute s29
+        n34 compute s30
+        n35 compute s31
+        n36 compute s32
+        n37 compute s33
+        n38 compute s34
+        n39 compute s35
+        n40 compute s36
+        n41 compute s37
+        n42 compute s38
+        n43 compute s39
+        n44 compute s40
+        n45 compute s41
+        n46 compute s42
+        n47 compute s43
+        n48 compute s44
+        n49 compute s45
+        n50 compute s46
+        n51 compute s47
+        n52 compute s48
+        n53 compute s49
+        n54 compute s50
+        n55 compute s51
+        n56 compute s52
+        n57 compute s53
+        n58 compute s54
+        n59 compute s55
+        n60 compute s56
+        n61 compute s57
+        n62 compute s58
+        n63 compute s59
+        n64 compute s60
+        n65 compute s61
+        n66 compute s62
+        n67 compute s63
+        n68 compute s64
+        n69 compute s65
+        n70 compute s66
+        n71 compute s67
+        n72 compute s68
+        n73 compute s69
+        n74 compute s70
+        n75 compute s71
+        n76 compute s72
+        n77 compute s73
+        n78 compute s74
+        n79 compute s75
+        n80 compute s76
+        n81 compute s77
+        n82 compute s78
+        n83 compute s79
+        n84 compute s80
+        n85 compute s81
+n86 stage 1
+  n87 loop a0 x8 masked strip 0
+    n88 registers state s3 link n97 slots 2
+      n89 registers state s19 link n97 slots 2
+        n90 unroll a0 x4
+          n91 vector a0 x4
+            n92 open s0 keeps s3
+            n93 open s1 keeps s3 slot 1
+            n94 open s8 keeps s19
+            n95 open s11 keeps s19 slot 1
+        n96 loop a1 x1
+          n97 unroll a0 x4
+            n98 vector a0 x4
+              n99 compute s0 reads s3
+              n100 compute s1 reads s3 slot 1
+              n101 compute s2 lane 0
+              n102 compute s3 reads s19 shifted keeps s3 closes
+              n103 compute s4
+              n104 compute s5
+              n105 compute s6
+              n106 compute s7
+              n107 compute s8 reads s19
+              n108 compute s9
+              n109 compute s10
+              n110 compute s11 reads s19 slot 1
+              n111 compute s12
+              n112 compute s13
+              n113 compute s14
+              n114 compute s15
+              n115 compute s16
+              n116 compute s17
+              n117 compute s18
+              n118 compute s19 keeps s19 closes
+              n119 compute s20
+              n120 compute s21 lane 7
+              n121 compute s22 lane 7
+        n122 unroll a0 x4
+          n123 vector a0 x4
+            n124 close s0 keeps s3
+            n125 close s1 keeps s3 slot 1
+            n126 close s8 keeps s19
+            n127 close s11 keeps s19 slot 1

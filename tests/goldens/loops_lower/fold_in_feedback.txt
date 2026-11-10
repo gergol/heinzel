@@ -1,0 +1,67 @@
+b0 f64 [d0] feed 0 value 4
+b1 f64 [8 1] value 6 constant first 0
+b2 f64 [8 1] value 9 constant first 8
+b3 f64 [8 1] value 14 constant first 16
+b4 f64 [d0] value 5 prefix 1 only-past
+b5 f64 [8 d0] value 17 prefix 1 only-past
+b6 f64 [d0] value 22 prefix 1
+stage 0 [8 d0]
+  s0 load f64 normal node 0 b6(- 0) back 1
+  s1 map f64 _mul normal node 1 #0.125 s0
+  s2 load f64 normal node 5 b4(- -) back 1
+  s3 load f64 in-unknown b0(- 0)
+  s4 map f64 _sub normal node 2 s3 s1 -> b4(- -)
+  s5 load f64 in-unknown b1(0 -)
+  s6 map f64 _mul normal node 4 s5 s4
+  s7 load f64 in-unknown b2(0 -)
+  s8 map f64 _mul normal node 7 s7 s2
+  s9 map f64 _add normal node 8 s6 s8
+  s10 load f64 normal node 9 b5(0 -) back 1
+  s11 load f64 in-unknown b3(0 -)
+  s12 map f64 _mul normal node 11 s11 s10
+  s13 map f64 _add normal node 12 s9 s12
+  s14 load f64 normal node 13 s13 -> b5(0 -)
+  s15 fold f64 normal node 14 reduce-sum s14
+  s16 map f64 _mul normal node 15 #0.5 s4
+  s17 map f64 _add normal node 16 s15 s16
+  s18 load f64 normal node 17 s17 -> b6(- 0)
+outputs b6
+n0 stage 0
+  n1 loop a0 x8 masked strip 0
+    n2 registers state s4
+      n3 registers state s14 link n18
+        n4 registers state s18
+          n5 unroll a0 x4
+            n6 vector a0 x4
+              n7 open s10 keeps s14
+          n8 open s0 keeps s18
+          n9 open s2 keeps s4
+          n10 loop a1 x1
+            n11 compute s0 reads s18
+            n12 compute s1
+            n13 compute s2 reads s4
+            n14 compute s3
+            n15 compute s4 keeps s4 closes
+            n16 registers acc s15 first link n18
+              n17 init s15
+              n18 unroll a0 x4
+                n19 vector a0 x4
+                  n20 compute s5
+                  n21 compute s6
+                  n22 compute s7
+                  n23 compute s8
+                  n24 compute s9
+                  n25 compute s10 reads s14
+                  n26 compute s11
+                  n27 compute s12
+                  n28 compute s13
+                  n29 compute s14 keeps s14 closes
+                  n30 accumulate s15
+              n31 finish s15
+              n32 compute s16
+              n33 compute s17
+              n34 compute s18 keeps s18
+          n35 unroll a0 x4
+            n36 vector a0 x4
+              n37 close s10 keeps s14
+          n38 close s2 keeps s4

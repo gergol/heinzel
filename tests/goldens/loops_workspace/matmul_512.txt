@@ -1,0 +1,10 @@
+copies 1 size 2099520
+b2 2048
+b3 1050944
+copies 3 size 2099520
+b2 2048
+b3 1050944
+b0 elements 262144 per sample 262144 strides 512 1 262144
+b1 elements 262144 per sample 262144 strides 512 1 262144
+b2 elements 262144 per sample 262144 strides 16 512 262144
+b3 elements 262144 per sample 262144 strides 512 1 262144

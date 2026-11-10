@@ -1,0 +1,4 @@
+-- default
+s0 = n0 n1 n2 n3
+  loops a0 vector 2 x2 | a1
+parallel-work 262144 line-bytes 64

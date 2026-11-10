@@ -1,0 +1,20 @@
+b0 f32 [d0] feed 0 value 0
+b1 f32 [d0] value 8
+stage 0 [d0] head 3 time n1
+  s0 load f32 normal node 0 b0(0) back 1
+  s1 map f32 _mul normal node 1 #0.5 s0
+  s2 load f32 in-unknown b0(0)
+  s3 map f32 _add normal node 2 s2 s1
+  s4 load f32 normal node 3 b0(0) back 3
+  s5 map f32 _mul normal node 4 #0.25 s4
+  s6 map f32 _add normal node 5 s3 s5 -> b1(0)
+outputs b1
+n0 stage 0
+  n1 loop a0 x1
+    n2 compute s0
+    n3 compute s1
+    n4 compute s2
+    n5 compute s3
+    n6 compute s4
+    n7 compute s5
+    n8 compute s6

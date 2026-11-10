@@ -1,0 +1,37 @@
+b0 f32 [13 7 24] feed 0 value 0
+b1 f32 [13 12 24] value 1
+b2 f32 [13 12 24] value 3
+stage 0 [13 2 24]
+  s0 load f32 node 0 #0.5 -> b1(0 1 2)
+stage 1 [13 7 24]
+  s0 load f32 node 0 b0(0 1 2) -> b1(0 1 2)@1+2
+stage 2 [13 3 24]
+  s0 load f32 node 0 #0.5 -> b1(0 1 2)@1+9
+stage 3 [13 12 24]
+  s0 load f32 in-unknown b1(0 1 2)
+  s1 map f32 _mul normal node 1 s0 #2 -> b2(0 1 2)
+outputs b2
+n0 stage 0
+  n1 loop a2 x1
+    n2 loop a0 x1
+      n3 loop a1 x4 ones strip 0
+        n4 vector a1 x4
+          n5 compute s0
+n6 stage 1
+  n7 loop a2 x1
+    n8 loop a0 x1
+      n9 loop a1 x4 ones strip 0
+        n10 vector a1 x4
+          n11 compute s0
+n12 stage 2
+  n13 loop a2 x1
+    n14 loop a0 x1
+      n15 loop a1 x4 ones strip 0
+        n16 vector a1 x4
+          n17 compute s0
+n18 stage 3
+  n19 loop a2 x1
+    n20 loop a0 x1
+      n21 loop a1 x1
+        n22 compute s0
+        n23 compute s1

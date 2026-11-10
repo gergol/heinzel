@@ -1,0 +1,11 @@
+copies 1 size 10264
+b3 2048
+b4 6464
+copies 3 size 10264
+b3 2048
+b4 6464
+b0 elements 1050 per sample 1050 strides 21 1 1050
+b1 elements 399 per sample 399 strides 19 1 399
+b2 elements 19 per sample 19 strides 1 19
+b3 elements 950 per sample 950 strides 19 1 950
+b4 elements 950 per sample 950 strides 19 1 950

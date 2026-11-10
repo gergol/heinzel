@@ -1,0 +1,10 @@
+copies 1 size 276
+b2 64
+b3 192
+copies 3 size 276
+b2 64
+b3 192
+b0 elements 21 per sample 1 strides 1
+b1 elements 21 per sample 1 strides 1
+b2 elements 21 per sample 1 strides 1
+b3 elements 21 per sample 1 strides 1

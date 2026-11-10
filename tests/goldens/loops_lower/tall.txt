@@ -1,0 +1,26 @@
+b0 f32 [50 21 1] feed 0 value 0
+b1 f32 [21 19 1] feed 1 value 1
+b2 f32 [19 1] feed 2 value 3
+b3 f32 [50 19 1] value 6
+stage 0 [50 19 1 21]
+  s0 load f32 in-unknown b0(0 - 2 1)
+  s1 load f32 in-unknown b1(- 1 2 0)
+  s2 fold f32 normal node 0 product-sum s0 s1
+  s3 load f32 in-unknown b2(- 0 1 -)
+  s4 map f32 _add normal node 1 s2 s3
+  s5 map f32 _max normal node 2 s4 #0 -> b3(0 1 2 -)
+outputs b3
+n0 stage 0
+  n1 loop a2 x1
+    n2 loop a0 x1
+      n3 loop a1 x1
+        n4 registers acc s2 first
+          n5 init s2
+          n6 loop a3 x1 peel
+            n7 compute s0
+            n8 compute s1
+            n9 accumulate s2
+          n10 finish s2
+          n11 compute s3
+          n12 compute s4
+          n13 compute s5

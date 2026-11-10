@@ -1,0 +1,73 @@
+b0 f64 [4096] feed 0 value 0
+b1 f64 [4 1] value 1 constant first 0
+b2 f64 [4 1] value 2 constant first 4
+b3 f64 [4 1] value 3 constant first 8
+b4 f64 [4 1] value 4 constant first 12
+b5 f64 [4 1] value 5 constant first 16
+b6 f64 [4 4096] value 7 prefix 2 only-past
+b7 f64 [4 4096] value 21 prefix 2 only-past
+b8 f64 [4096] value 23
+stage 0 [4 4096] time n9 skewed
+  s0 load f64 high node 6 b6(0 -) back 1
+  s1 load f64 high node 7 b6(0 -) back 2
+  s2 load f64 in-unknown b0(- 0)
+  s3 map f64 _chain high node 5 s2 b7(0 -)@0-1 -> b6(0 -)
+  s4 load f64 high node 8 b7(0 -) back 1
+  s5 load f64 high node 9 b7(0 -) back 2
+  s6 load f64 in-unknown b1(0 -)
+  s7 map f64 _mul high node 10 s6 s3
+  s8 load f64 in-unknown b2(0 -)
+  s9 map f64 _mul high node 11 s8 s0
+  s10 load f64 in-unknown b3(0 -)
+  s11 map f64 _mul high node 12 s10 s1
+  s12 load f64 in-unknown b4(0 -)
+  s13 map f64 _mul high node 13 s12 s4
+  s14 load f64 in-unknown b5(0 -)
+  s15 map f64 _mul high node 14 s14 s5
+  s16 map f64 _add high node 15 s7 s9
+  s17 map f64 _add high node 16 s16 s11
+  s18 map f64 _sub high node 17 s17 s13
+  s19 map f64 _sub high node 18 s18 s15
+  s20 load f64 high node 19 s19 -> b7(0 -)
+  s21 load f64 high node 20 s20
+  s22 load f64 high node 21 s21 -> b8(- 0)
+outputs b8 parallel-work 262144 line-bytes 64
+n0 stage 0
+  n1 loop a0 x4 masked strip 0
+    n2 registers state s3 link n10 slots 2
+      n3 registers state s20 link n10 slots 2
+        n4 vector a0 x4
+          n5 open s0 keeps s3
+          n6 open s1 keeps s3 slot 1
+          n7 open s4 keeps s20
+          n8 open s5 keeps s20 slot 1
+        n9 loop a1 x1
+          n10 vector a0 x4
+            n11 compute s0 reads s3
+            n12 compute s1 reads s3 slot 1
+            n13 compute s2 lane 0
+            n14 compute s3 reads s20 shifted keeps s3 closes
+            n15 compute s4 reads s20
+            n16 compute s5 reads s20 slot 1
+            n17 compute s6
+            n18 compute s7
+            n19 compute s8
+            n20 compute s9
+            n21 compute s10
+            n22 compute s11
+            n23 compute s12
+            n24 compute s13
+            n25 compute s14
+            n26 compute s15
+            n27 compute s16
+            n28 compute s17
+            n29 compute s18
+            n30 compute s19
+            n31 compute s20 keeps s20 closes
+            n32 compute s21 lane 3
+            n33 compute s22 lane 3
+        n34 vector a0 x4
+          n35 close s0 keeps s3
+          n36 close s1 keeps s3 slot 1
+          n37 close s4 keeps s20
+          n38 close s5 keeps s20 slot 1

@@ -1,0 +1,7 @@
+-- zen2, stage_start 0, forwarded 4
+s0 = n0 n1 n2 n3 n4 n5 n6
+  loops a0 vector 8 | a1
+s1 = n7
+  loops a1, a0 vector 8 |
+band s0+2 a1 16
+parallel-work 262144 line-bytes 64

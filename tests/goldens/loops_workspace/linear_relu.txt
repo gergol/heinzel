@@ -1,0 +1,11 @@
+copies 1 size 1313088
+b3 2048
+b4 1050944
+copies 3 size 1313088
+b3 2048
+b4 1050944
+b0 elements 65536 per sample 65536 strides 512 1 65536
+b1 elements 262144 per sample 262144 strides 512 1 262144
+b2 elements 512 per sample 512 strides 512 1 512
+b3 elements 262144 per sample 262144 strides 16 512 262144
+b4 elements 65536 per sample 65536 strides 512 1 65536
