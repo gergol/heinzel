@@ -176,7 +176,6 @@ build with a message naming it; it never computes a wrong number. The list is in
 - [`docs/limitations.md`](docs/limitations.md): what is refused and why, the capacities, and how to work around them.
 - [`docs/knob-math.md`](docs/knob-math.md): math on Params alone runs only when a Param changes.
 - [`docs/sections-in-lanes.md`](docs/sections-in-lanes.md): cascades of filter sections in vector lanes.
-- [`docs/decisions.md`](docs/decisions.md): the design decisions and the measurements behind them.
 
 ## License
 
